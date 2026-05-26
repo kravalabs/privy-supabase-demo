@@ -31,7 +31,7 @@ A Vite + React application that integrates with Privy AI using Supabase Edge Fun
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [Supabase CLI](https://supabase.com/docs/guides/cli/getting-started)
-- [Krava AI Account](https://www.privy.ai/) with API credentials
+- [Krava AI Account](https://www.krava.ai/) with API credentials
 
 ## Setup Instructions
 
@@ -89,7 +89,7 @@ KRAVA_API_SECRET=your-krava-api-secret
 | `KRAVA_API_SECRET` | Your Krava AI API secret | Supabase Dashboard + local `.env` |
 
 **Getting Krava Credentials:**
-1. Sign up at [Krava AI](https://www.privy.ai/)
+1. Sign up at [Krava AI](https://www.krava.ai/)
 2. Go to your dashboard → API Keys
 3. Generate a new API key and secret
 
@@ -256,7 +256,7 @@ If you get session errors:
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
 - [React](https://react.dev/) - UI Library
 - [Supabase](https://supabase.com/) - Backend as a Service
-- [Krava AI](https://www.privy.ai/) - AI Chat API
+- [Krava AI](https://www.krava.ai/) - AI Chat API
 - [Deno](https://deno.land/) - Edge Function Runtime
 
 ## License

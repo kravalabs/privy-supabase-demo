@@ -1,10 +1,10 @@
-# Privy + Supabase Demo
+# Krava + Supabase Demo
 
 A Vite + React application that integrates with Privy AI using Supabase Edge Functions for secure session management and streaming chat capabilities.
 
 ## Features
 
-- 🔐 **Secure Session Management** - Create and manage Privy sessions via Supabase Edge Functions
+- 🔐 **Secure Session Management** - Create and manage Krava sessions via Supabase Edge Functions
 - 💬 **Streaming Chat** - Real-time chat responses using Server-Sent Events (SSE)
 - ⚡ **Vite + React** - Fast development with Hot Module Replacement
 - 🚀 **Supabase Edge Functions** - Serverless functions for secure API handling
@@ -14,14 +14,14 @@ A Vite + React application that integrates with Privy AI using Supabase Edge Fun
 ```
 ├── src/
 │   ├── components/
-│   │   └── PrivyChat.tsx       # React chat component with streaming
+│   │   └── KravaChat.tsx       # React chat component with streaming
 │   ├── App.jsx
 │   └── main.jsx
 ├── supabase/
 │   └── functions/
-│       ├── privy-session/      # Edge function: Create/get Privy sessions
+│       ├── Krava-session/      # Edge function: Create/get Krava sessions
 │       │   └── index.ts
-│       └── privy-chat/         # Edge function: Stream chat responses
+│       └── krava-chat/         # Edge function: Stream chat responses
 │           └── index.ts
 ├── package.json
 └── vite.config.js
@@ -31,7 +31,7 @@ A Vite + React application that integrates with Privy AI using Supabase Edge Fun
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [Supabase CLI](https://supabase.com/docs/guides/cli/getting-started)
-- [Privy AI Account](https://www.privy.ai/) with API credentials
+- [Krava AI Account](https://www.privy.ai/) with API credentials
 
 ## Setup Instructions
 
@@ -75,8 +75,8 @@ VITE_SUPABASE_ANON_KEY=your-anon-key
 
 # These are only for local edge function development
 # In production, set these in the Supabase Dashboard
-PRIVY_API_KEY=your-privy-api-key
-PRIVY_API_SECRET=your-privy-api-secret
+KRAVA_API_KEY=your-krava-api-key
+KRAVA_API_SECRET=your-krava-api-secret
 ```
 
 **Environment Variables Explained:**
@@ -85,11 +85,11 @@ PRIVY_API_SECRET=your-privy-api-secret
 |----------|-------------|--------------|
 | `VITE_SUPABASE_URL` | Your Supabase project URL | `.env` file |
 | `VITE_SUPABASE_ANON_KEY` | Supabase anonymous key (safe for client) | `.env` file |
-| `PRIVY_API_KEY` | Your Privy AI API key | Supabase Dashboard + local `.env` |
-| `PRIVY_API_SECRET` | Your Privy AI API secret | Supabase Dashboard + local `.env` |
+| `KRAVA_API_KEY` | Your Krava AI API key | Supabase Dashboard + local `.env` |
+| `KRAVA_API_SECRET` | Your Krava AI API secret | Supabase Dashboard + local `.env` |
 
-**Getting Privy Credentials:**
-1. Sign up at [Privy AI](https://www.privy.ai/)
+**Getting Krava Credentials:**
+1. Sign up at [Krava AI](https://www.privy.ai/)
 2. Go to your dashboard → API Keys
 3. Generate a new API key and secret
 
@@ -99,10 +99,10 @@ Deploy the Supabase Edge Functions to your project:
 
 ```bash
 # Deploy the session function
-supabase functions deploy privy-session
+supabase functions deploy krava-session
 
 # Deploy the chat function
-supabase functions deploy privy-chat
+supabase functions deploy krava-chat
 ```
 
 **Set Environment Variables in Supabase Dashboard:**
@@ -113,14 +113,14 @@ After deploying, set your secrets in the Supabase Dashboard:
 2. Select your project
 3. Go to **Edge Functions** → **Secrets**
 4. Add the following secrets:
-   - `PRIVY_API_KEY`
-   - `PRIVY_API_SECRET`
+   - `KRAVA_API_KEY`
+   - `KRAVA_API_SECRET`
 
 Or use the CLI:
 
 ```bash
-supabase secrets set PRIVY_API_KEY=your-privy-api-key
-supabase secrets set PRIVY_API_SECRET=your-privy-api-secret
+supabase secrets set KRAVA_API_KEY=your-krava-api-key
+supabase secrets set KRAVA_API_SECRET=your-krava-api-secret
 ```
 
 ### 5. Run the Frontend
@@ -135,17 +135,17 @@ Open your browser and navigate to `http://localhost:5173`
 
 ## Usage
 
-### Using the PrivyChat Component
+### Using the KravaChat Component
 
-Import and use the `PrivyChat` component in your React application:
+Import and use the `KravaChat` component in your React application:
 
 ```tsx
-import { PrivyChat } from './components/PrivyChat';
+import { KravaChat } from './components/KravaChat';
 
 function App() {
   return (
     <div className="app">
-      <h1>Privy Chat Demo</h1>
+      <h1>Krava Chat Demo</h1>
       <PrivyChat
         userId="user-123"  // Unique identifier for the user
         supabaseUrl={import.meta.env.VITE_SUPABASE_URL}
@@ -181,14 +181,14 @@ supabase functions serve
 ```
 
 The functions will be available at:
-- `http://localhost:54321/functions/v1/privy-session`
-- `http://localhost:54321/functions/v1/privy-chat`
+- `http://localhost:54321/functions/v1/krava-session`
+- `http://localhost:54321/functions/v1/krava-chat`
 
 ### API Endpoints
 
-#### POST `/functions/v1/privy-session`
+#### POST `/functions/v1/krava-session`
 
-Creates or retrieves a Privy session for a user.
+Creates or retrieves a Krava session for a user.
 
 **Request Body:**
 ```json
@@ -200,7 +200,7 @@ Creates or retrieves a Privy session for a user.
 **Response:**
 ```json
 {
-  "sessionToken": "privy-session-token-xyz"
+  "sessionToken": "Krava-session-token-xyz"
 }
 ```
 
@@ -211,7 +211,7 @@ Streams chat responses using Server-Sent Events.
 **Request Body:**
 ```json
 {
-  "sessionToken": "privy-session-token-xyz",
+  "sessionToken": "krava-session-token-xyz",
   "message": "Hello, how are you?"
 }
 ```
@@ -236,8 +236,8 @@ The built files will be in the `dist/` directory.
 
 Check function logs:
 ```bash
-supabase functions logs privy-session --tail
-supabase functions logs privy-chat --tail
+supabase functions logs krava-session --tail
+supabase functions logs krava-chat --tail
 ```
 
 ### CORS Issues
@@ -247,7 +247,7 @@ The edge functions include CORS headers for all origins (`*`). In production, co
 ### Session Token Issues
 
 If you get session errors:
-1. Verify `PRIVY_API_KEY` and `PRIVY_API_SECRET` are set correctly
+1. Verify `KRAVA_API_KEY` and `KRAVA_API_SECRET` are set correctly
 2. Check that the userId is being passed correctly
 3. Review edge function logs for detailed error messages
 
@@ -256,7 +256,7 @@ If you get session errors:
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
 - [React](https://react.dev/) - UI Library
 - [Supabase](https://supabase.com/) - Backend as a Service
-- [Privy AI](https://www.privy.ai/) - AI Chat API
+- [Krava AI](https://www.privy.ai/) - AI Chat API
 - [Deno](https://deno.land/) - Edge Function Runtime
 
 ## License
@@ -270,6 +270,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Support
 
 For issues related to:
-- **Privy AI**: [Privy Support](https://www.privy.ai/support)
+- **Krava AI**: [Privy Support](https://www.krava.ai/support)
 - **Supabase**: [Supabase Docs](https://supabase.com/docs)
 - **This Project**: Open an issue on GitHub

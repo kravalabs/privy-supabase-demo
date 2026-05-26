@@ -270,6 +270,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Support
 
 For issues related to:
-- **Krava AI**: [Privy Support](https://www.krava.ai/support)
+- **Krava AI**: [Krava Support](https://www.krava.ai/support)
 - **Supabase**: [Supabase Docs](https://supabase.com/docs)
 - **This Project**: Open an issue on GitHub
